@@ -11,19 +11,28 @@ const Banner = () => {
         <Carousel
             autoPlay={true}
             infiniteLoop={true}
+
         >
-            <div>
+            <div className='relative'>
                 <img src={bannerImg1} />
-                <div >
-                    <button>Track your percel</button>
-                    <button>Be a Rider</button>
+                <div className='absolute ms-15 top-[73%] flex gap-5'>
+                    <button className='btn bg-primary'>Track your percel</button>
+                    <button className='btn btn-outline'>Be a Rider</button>
                 </div>
             </div>
-            <div>
+            <div className='relative'>
                 <img src={bannerImg1} />
+                <div className='absolute ms-15 top-[73%] flex gap-5'>
+                    <button className='btn bg-primary'>Track your percel</button>
+                    <button className='btn btn-outline'>Be a Rider</button>
+                </div>
             </div>
-            <div>
+            <div className='relative'>
                 <img src={bannerImg1} />
+                <div className='absolute ms-15 top-[73%] flex gap-5'>
+                    <button className='btn bg-primary'>Track your percel</button>
+                    <button className='btn btn-outline'>Be a Rider</button>
+                </div>
             </div>
         </Carousel>
     );
