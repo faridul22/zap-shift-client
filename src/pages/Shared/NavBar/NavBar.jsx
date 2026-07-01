@@ -4,7 +4,8 @@ import { NavLink } from 'react-router';
 
 const NavBar = () => {
     const links = <>
-        <NavLink to="">Services</NavLink>
+        <li><NavLink to="">Services</NavLink></li>
+        <li><NavLink to="/coverage">Coverage</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -19,7 +20,7 @@ const NavBar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">
+                <a className="">
                     <Logo></Logo>
                 </a>
             </div>
