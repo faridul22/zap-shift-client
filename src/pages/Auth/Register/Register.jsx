@@ -1,11 +1,21 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
+import useAuth from '../../../hooks/useAuth';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const { registerUser } = useAuth()
+
     const handleRegister = (data) => {
-        console.log(data)
+        registerUser(data.email, data.password)
+            .then(result => {
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
         <div className="card-body">
