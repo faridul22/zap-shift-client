@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../../../hooks/useAuth';
+import SocialLogin from '../../../components/Logo/SocialLogin/SocialLogin';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -121,10 +122,7 @@ const Register = () => {
             <div className="divider">OR</div>
 
             {/* Google Button */}
-            <button className="btn btn-outline w-full">
-                <FcGoogle className="text-xl" />
-                Register with Google
-            </button>
+            <SocialLogin></SocialLogin>
         </div>
 
     );

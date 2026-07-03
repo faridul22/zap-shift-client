@@ -1,19 +1,32 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
+import useAuth from '../../../hooks/useAuth';
+import SocialLogin from '../../../components/Logo/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    const { signInUser } = useAuth()
+
     const handleLogin = (data) => {
-        console.log(data)
+        signInUser(data.email, data.password)
+            .then(result => {
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
         <div className="card-body">
             {/* Title */}
             <h1 className="text-3xl font-bold text-center">
-                Login your Account
+                Welcome Back
             </h1>
+            <p className="text-center text-sm text-gray-500 mb-5">
+                Login with EasyHR
+            </p>
             {/* form */}
             <form onSubmit={handleSubmit(handleLogin)} className="space-y-4">
                 {/* Email field */}
@@ -67,8 +80,8 @@ const Login = () => {
             {/* Login Link */}
             <p className="text-center text-sm mt-3">
                 New to this site?{" "}
-                <a href="/login" className="text-primary font-semibold">
-                    Login
+                <a href="/register" className="text-primary font-semibold">
+                    Register
                 </a>
             </p>
 
@@ -76,10 +89,7 @@ const Login = () => {
             <div className="divider">OR</div>
 
             {/* Google Button */}
-            <button className="btn btn-outline w-full">
-                <FcGoogle className="text-xl" />
-                Register with Google
-            </button>
+            <SocialLogin></SocialLogin>
         </div>
     );
 };
