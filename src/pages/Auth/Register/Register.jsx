@@ -46,6 +46,23 @@ const Register = () => {
                         )
                     }
                 </div>
+                {/* photo url */}
+                <div>
+                    <label className="label">
+                        <span className="label-text font-medium">Photo Url</span>
+                    </label>
+                    <input
+                        type="file"
+                        placeholder="Your photo url"
+                        className="file-input input-bordered w-full font-bold"
+                        {...register('photo', { required: "photo is required" })}
+                    />
+                    {
+                        errors.photo && (
+                            <p className="text-error text-sm mt-1">{errors.photo.message}</p>
+                        )
+                    }
+                </div>
                 {/* Email */}
                 <div>
                     <label className="label">
