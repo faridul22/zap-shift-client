@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../../../hooks/useAuth';
 import SocialLogin from '../../../components/Logo/SocialLogin/SocialLogin';
+import axios from 'axios';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -10,9 +11,30 @@ const Register = () => {
     const { registerUser } = useAuth()
 
     const handleRegister = (data) => {
+        const profileImg = data.photo[0];
         registerUser(data.email, data.password)
             .then(result => {
                 console.log(result)
+                const formData = new FormData();
+                formData.append('image', profileImg);
+                const imgApiUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host}`
+                axios.post(imgApiUrl, formData)
+                    .then(res => {
+                        console.log(res)
+                        //   update user profile
+                        const userProfile = {
+                            displayName: data.name,
+                            photoUrl: data.data.url,
+
+                        }
+                        updateUserProfile(userProfile)
+                            .then(result => {
+                                console.log(result, 'user profile updated done')
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            })
+                    })
             })
             .catch(error => {
                 console.log(error)
